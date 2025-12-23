@@ -13,12 +13,12 @@ const SignIn = () => {
       className="relative p-6 sm:p-0 w-full h-full lg:w-1/2 bg-neutral-50"
     >
       <div
-        className="h-full max-w-md mx-auto flex flex-col items-center justify-center gap-6 relative z-1"
+        className="h-full max-w-md mx-auto py-6 md:py-8 flex flex-col lg:justify-center items-center gap-6 relative z-1"
       >
         <div
           className="w-full mb-2"
         >
-          <div className="flex max-w-sm flex-col items-center mb-4">
+          <div className="flex max-w-sm flex-col items-center mb-4 lg:hidden">
             <Link href="/" className="flex items-center">
               <Image
                 width={48}
@@ -103,7 +103,7 @@ const SignIn = () => {
         </div>
       </div>
 
-      <GridShape className='md:hidden' />
+      <GridShape className='lg:hidden' />
     </div>
   )
 }

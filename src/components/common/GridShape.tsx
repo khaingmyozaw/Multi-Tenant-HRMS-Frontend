@@ -17,7 +17,7 @@ export default function GridShape({ className = '' }: GridshapeType) {
         />
       </div>
       <div
-        className={`absolute bottom-0 left-0 w-full max-w-[250px] rotate-180 xl:max-w-[450px] ${className}`}>
+        className={`hidden md:block absolute bottom-0 left-0 w-full max-w-[250px] rotate-180 xl:max-w-[450px] ${className}`}>
         <Image
           width={540}
           height={254}
