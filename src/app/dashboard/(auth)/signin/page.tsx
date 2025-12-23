@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import GoogleIcon from '@/components/icons/google'
 import MicrosoftIcon from '@/components/icons/microsoft'
+import Image from 'next/image'
 
 const SignIn = () => {
   return (
@@ -17,8 +18,27 @@ const SignIn = () => {
         <div
           className="w-full mb-2"
         >
+          <div className="flex max-w-sm flex-col items-center mb-4">
+            <Link href="/" className="flex items-center">
+              <Image
+                width={48}
+                height={48}
+                src="/images/logos/logo-dark.svg"
+                alt='Human Hr Logo'
+                className='pointer-events-none'
+              />
+              <h3
+                className="font-bold text-neutral-800 text-title-sm">
+                Humano HR
+              </h3>
+            </Link>
+
+            <p className="text-center text-black/60">
+              Manage employees, attendance, payroll, and core HR operations in one centralized platform
+            </p>
+          </div>
           <h1
-            className="mb-2 font-semibold text-neutral-800 text-title-sm dark:text-white/90 sm:text-title-md"
+            className="mb- font-semibold text-neutral-800 text-title-sm dark:text-white/90 sm:text-title-md"
           >
             Sign In
           </h1>
