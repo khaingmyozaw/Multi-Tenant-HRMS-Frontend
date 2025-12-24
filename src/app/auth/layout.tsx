@@ -10,7 +10,7 @@ const AuthLayout = ({
     children: React.ReactNode
 }) => {
     return (
-        <div className='relative sm:p-0 bg-neutral-100 overflow-y-auto'>
+        <div className='relative sm:p-0 bg-neutral-100'>
             {/* <ThemeProvider> */}
             <div className="relative w-full h-screen flex">
                 <div className="hidden lg:flex w-full h-full lg:w-1/2 p-8 bg-brand-950 overflow-hidden justify-center items-center relative">

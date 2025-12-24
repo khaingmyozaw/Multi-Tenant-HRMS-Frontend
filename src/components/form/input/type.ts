@@ -1,5 +1,5 @@
 export type InputFieldType = {
-    label?: string;
+    label?: any;
     name?: string;
     id?: string;
     type?: string;

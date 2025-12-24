@@ -19,15 +19,15 @@ const SignInForm = () => {
 
     return (
         <div
-            className="relative p-6 sm:p-0 w-full h-full lg:w-1/2 bg-neutral-50"
+            className="relative w-full h-full lg:w-1/2 p-5 sm:p-0 bg-neutral-50 lg:overflow-auto"
         >
             <div
-                className="h-full max-w-md mx-auto py-6 md:py-8 flex flex-col lg:justify-center items-center gap-6 relative z-1"
+                className="h-auto max-w-md mx-auto px-1 md:py-8 flex flex-col items-center gap-6 relative z-1 overflow-y-auto"
             >
                 <div
                     className="w-full mb-2"
                 >
-                    <div className="flex max-w-sm flex-col items-center mb-4 lg:hidden">
+                    <div className="flex max-w-sm flex-col items-center gap-1 mb-4 lg:hidden">
                         <Link href="/" className="flex items-center">
                             <Image
                                 width={48}
@@ -60,6 +60,7 @@ const SignInForm = () => {
 
                 <InputField label='Email' name='email' id='email' placeholder='hr@company.com' />
 
+                {/* password */}
                 <div className="grid w-full items-center gap-2">
                     <Label htmlFor='password' className='text-neutral-700'>Password</Label>
                     <div className="h-auto relative">
