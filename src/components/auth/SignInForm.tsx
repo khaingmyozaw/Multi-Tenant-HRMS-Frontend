@@ -67,7 +67,7 @@ const SignInForm = () => {
                             type={showPassword ? 'text' : 'password'}
                             name='password'
                             id='password'
-                            className='w-full h-12 px-4 py-3 border-neutral-300 focus-visible:border-brand-300 focus-visible:ring-brand-300/20 focus-visible:ring-3'
+                            className='w-full h-12 px-4 py-3 border-neutral-400 focus-visible:border-brand-300 focus-visible:ring-brand-300/20 focus-visible:ring-3'
                         />
                         <span
                             onClick={() => setShowPassword(!showPassword)}
