@@ -1,10 +1,12 @@
 "use client"
 
 import { useState } from 'react'
-import { Eye, EyeOff } from 'lucide-react'
+import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Eye, EyeOff } from 'lucide-react'
 import { motion } from 'motion/react'
+
 import GridShape from '@/components/common/GridShape'
 import InputField from '@/components/form/input/InputField'
 import { Button } from '@/components/ui/button'
@@ -13,7 +15,7 @@ import MicrosoftIcon from '@/components/icons/microsoft'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Checkbox } from '../ui/checkbox'
-import clsx from 'clsx'
+import DatePicker from '../form/datepicker/DatePicker'
 
 const SignInForm = () => {
 
@@ -69,6 +71,8 @@ const SignInForm = () => {
                 <InputField label='Name' name='name' id='name' placeholder='Mr. Boss' />
 
                 <InputField label='Email' name='email' id='email' placeholder='hr@company.com' />
+
+                <DatePicker label='Date of birth' placeholder='Please select a date' />
 
                 {/* password */}
                 <div className="grid w-full items-center gap-2">
