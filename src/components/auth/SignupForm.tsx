@@ -17,7 +17,6 @@ import { Input } from '@/components/ui/input'
 import { Checkbox } from '../ui/checkbox'
 import DatePicker from '../form/datepicker/DatePicker'
 import SelectField from '../form/select/SelectField'
-import { isValid } from 'date-fns'
 
 const SignInForm = () => {
 
@@ -25,12 +24,15 @@ const SignInForm = () => {
     const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
     const [password, setPassword] = useState<string>('');
     const [isValid, setIsValid] = useState<boolean | null>(null);
+    const [isAgree, setIsAgree] = useState<boolean>(false);
 
     const valid = getPasswordValidation(password);
 
-    const handleConfirmPassword = (e: React.ChangeEvent<HTMLInputElement>): void => {
-        setIsValid(e.target.value === password)
-    }
+    const handleConfirmPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setIsValid(e.target.value != '' && e.target.value === password);
+    };
+
+    const handleIsAgree = (checked: boolean | "indeterminate") => setIsAgree(Boolean(checked));
 
     return (
         <motion.div
@@ -192,7 +194,11 @@ const SignInForm = () => {
                     className="w-full flex justify-between items-start text-neutral-800">
 
                     <div className="w-full flex items-start gap-1">
-                        <Checkbox id='agree' name='is_agree' className='mt-1' />
+                        <Checkbox
+                            id='agree'
+                            name='is_agree'
+                            className='mt-1'
+                            onCheckedChange={handleIsAgree} />
                         <p className="ml-1 inline-block text-sm text-neutral-500">
                             By creating an account means you agree to the
                             <Link
@@ -212,7 +218,10 @@ const SignInForm = () => {
                     </div>
                 </div>
 
-                <Button className='h-11 w-full px-4 py-5 rounded-lg bg-brand-500 hover:bg-brand-700'>
+                <Button
+                    className='h-11 w-full px-4 py-5 rounded-lg bg-brand-500 hover:bg-brand-700'
+                    disabled={!isAgree}
+                >
                     Sign up
                 </Button>
 
@@ -221,7 +230,7 @@ const SignInForm = () => {
                         Already have an account?
                     </p>
                     <Link
-                        href="/reset-password"
+                        href="/auth/signin"
                         className="text-sm text-brand-500 hover:text-brand-600 dark:text-brand-400"
                     >
                         Sign In
