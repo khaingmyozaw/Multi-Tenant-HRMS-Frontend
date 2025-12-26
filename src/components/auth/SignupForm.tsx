@@ -16,6 +16,7 @@ import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Checkbox } from '../ui/checkbox'
 import DatePicker from '../form/datepicker/DatePicker'
+import SelectField from '../form/select/SelectField'
 
 const SignInForm = () => {
 
@@ -73,6 +74,18 @@ const SignInForm = () => {
                 <InputField label='Email' name='email' id='email' placeholder='hr@company.com' />
 
                 <DatePicker label='Date of birth' placeholder='Please select a date' />
+
+                <div className="w-full flex flex-col gap-3">
+                    <Label htmlFor="gender" className="px-1">
+                        Gender
+                    </Label>
+                    <SelectField
+                        placeholder='Please select your gender'
+                        label='Gender'
+                        items={['Male', 'Female', 'Other']}
+                        className='inline-flex !h-12 w-full px-4 py-3 rounded-lg font-normal text-neutral-400 bg-transparent border-neutral-400 focus-visible:border-brand-300 focus-visible:ring-brand-300/20 focus-visible:ring-3 hover:bg-neutral-100 hover:text-neutral-500'
+                    />
+                </div>
 
                 {/* password */}
                 <div className="grid w-full items-center gap-2">
