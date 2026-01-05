@@ -5,4 +5,5 @@ export type InputFieldType = {
     type?: string;
     placeholder?: string;
     className?: string;
+    error?: string;
 }

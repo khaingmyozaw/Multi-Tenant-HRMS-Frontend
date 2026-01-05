@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Eye, EyeOff } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -12,10 +12,37 @@ import GoogleIcon from '@/components/icons/google'
 import MicrosoftIcon from '@/components/icons/microsoft'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
+import { login } from '@/lib/auth'
+import { useRouter } from 'next/navigation'
+// import { login } from '@/lib/auth'
 
 const SignInForm = () => {
 
+    const router = useRouter();
     const [showPassword, setShowPassword] = useState(false);
+    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<String | null>(null);
+
+    const handleLogin = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+        setError(null);
+
+        try {
+            const data = await login(email, password);
+
+            // save token
+            localStorage.setItem('access_token', data.access_token);
+
+            router.push('/dashboard');
+        } catch (err: any) {
+            setError(err.message || 'Invalid credentials');
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <div
@@ -58,52 +85,65 @@ const SignInForm = () => {
                     </p>
                 </div>
 
-                <InputField label='Email' name='email' id='email' placeholder='hr@company.com' />
+                <form onSubmit={handleLogin} className='w-full flex flex-col gap-6'>
 
-                {/* password */}
-                <div className="grid w-full items-center gap-2">
-                    <Label htmlFor='password' className='text-neutral-700'>Password</Label>
-                    <div className="h-auto relative">
-                        <Input
-                            type={showPassword ? 'text' : 'password'}
-                            name='password'
-                            id='password'
-                            className='w-full h-12 px-4 py-3 border-neutral-400 focus-visible:border-brand-300 focus-visible:ring-brand-300/20 focus-visible:ring-3'
-                        />
-                        <span
-                            onClick={() => setShowPassword(!showPassword)}
-                            className="absolute z-3 -translate-y-1/2 cursor-pointer right-4 top-1/2 "
-                        >
-                            {showPassword ? (
-                                <Eye
-                                    size={20}
-                                    className="text-neutral-500"
-                                />
-                            ) : (
-                                <EyeOff
-                                    size={20}
-                                    className="text-neutral-500"
-                                />
-                            )}
-                        </span>
+                    {
+                        error ?
+                            <p className="font-light text-sm px-2 py-1 bg-red-50 text-red-500">
+                                {error}
+                            </p>
+                            : ''
+                    }
+
+
+                    <InputField label='Email' name='email' id='email' placeholder='hr@company.com' />
+
+                    {/* password */}
+                    <div className="grid w-full items-center gap-2">
+                        <Label htmlFor='password' className='text-neutral-700'>Password</Label>
+                        <div className="h-auto relative">
+                            <Input
+                                type={showPassword ? 'text' : 'password'}
+                                name='password'
+                                id='password'
+                                className='w-full h-12 px-4 py-3 border-neutral-400 focus-visible:border-brand-300 focus-visible:ring-brand-300/20 focus-visible:ring-3'
+                            />
+                            <span
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute z-3 -translate-y-1/2 cursor-pointer right-4 top-1/2 "
+                            >
+                                {showPassword ? (
+                                    <Eye
+                                        size={20}
+                                        className="text-neutral-500"
+                                    />
+                                ) : (
+                                    <EyeOff
+                                        size={20}
+                                        className="text-neutral-500"
+                                    />
+                                )}
+                            </span>
+                        </div>
                     </div>
-                </div>
 
-                <div
-                    className="w-full flex justify-between text-neutral-800">
-                    <CheckboxField label='Remember me' id='remember' name='is_remember' />
+                    <div
+                        className="w-full flex justify-between text-neutral-800">
+                        <CheckboxField label='Remember me' id='remember' name='is_remember' />
 
-                    <Link
-                        href="/reset-password"
-                        className="text-sm text-brand-500 hover:text-brand-600 dark:text-brand-400"
-                    >
-                        Forgot password?
-                    </Link>
-                </div>
+                        <Link
+                            href="/reset-password"
+                            className="text-sm text-brand-500 hover:text-brand-600 dark:text-brand-400"
+                        >
+                            Forgot password?
+                        </Link>
+                    </div>
 
-                <Button className='h-11 w-full px-4 py-5 rounded-lg bg-brand-500 hover:bg-brand-700'>
-                    Sign in
-                </Button>
+                    <Button className='h-11 w-full px-4 py-5 rounded-lg bg-brand-500 hover:bg-brand-700'>
+                        {loading ? 'Signing in...' : 'Sign in'}
+                    </Button>
+
+                </form>
 
                 <div className="flex gap-1 text-start">
                     <p className='text-sm font-normal text-center text-neutral-700 sm:text-start'>Don't have an account?</p>
