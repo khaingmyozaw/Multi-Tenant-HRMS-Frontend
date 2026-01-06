@@ -96,7 +96,14 @@ const SignInForm = () => {
                     }
 
 
-                    <InputField label='Email' name='email' id='email' placeholder='hr@company.com' />
+                    <InputField 
+                        label='Email' 
+                        name='email' 
+                        id='email' 
+                        placeholder='hr@company.com' 
+                        value={email}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+                    />
 
                     {/* password */}
                     <div className="grid w-full items-center gap-2">
@@ -106,6 +113,8 @@ const SignInForm = () => {
                                 type={showPassword ? 'text' : 'password'}
                                 name='password'
                                 id='password'
+                                value={password}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                                 className='w-full h-12 px-4 py-3 border-neutral-400 focus-visible:border-brand-300 focus-visible:ring-brand-300/20 focus-visible:ring-3'
                             />
                             <span

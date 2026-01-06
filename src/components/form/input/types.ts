@@ -1,9 +1,6 @@
-export type InputFieldType = {
-    label?: any;
-    name?: string;
-    id?: string;
-    type?: string;
-    placeholder?: string;
-    className?: string;
+import React from 'react'
+
+export type InputFieldType = React.InputHTMLAttributes<HTMLInputElement> & {
+    label?: React.ReactNode;
     error?: string;
 }
