@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/context/ThemeProvider";
+import { RootProviders } from "./RootProviders";
 import { Analytics } from "@vercel/analytics/next";
 
 const outfit = Outfit({
@@ -38,9 +38,9 @@ export default function RootLayout({
         className={`${outfit.className} antialiased`}
       >
         <Analytics />
-        <ThemeProvider>
+        <RootProviders>
           {children}
-        </ThemeProvider>
+        </RootProviders>
       </body>
     </html>
   );
