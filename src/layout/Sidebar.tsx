@@ -27,38 +27,37 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   {
-    icon: <GridIcon />,
+    icon: <CalenderIcon />,
     name: "Dashboard",
-    subItems: [{ name: "Ecommerce", path: "/", pro: false }],
+    path: "/dashboard",
   },
   {
     icon: <CalenderIcon />,
-    name: "Calendar",
-    path: "/calendar",
-  },
-  {
-    icon: <UserCircleIcon />,
-    name: "User Profile",
-    path: "/profile",
-  },
-
-  {
-    name: "Forms",
-    icon: <ListIcon />,
-    subItems: [{ name: "Form Elements", path: "/form-elements", pro: false }],
-  },
-  {
-    name: "Tables",
-    icon: <TableIcon />,
-    subItems: [{ name: "Basic Tables", path: "/basic-tables", pro: false }],
-  },
-  {
-    name: "Pages",
-    icon: <PageIcon />,
+    name: "Config",
     subItems: [
-      { name: "Blank Page", path: "/blank", pro: false },
-      { name: "404 Error", path: "/error-404", pro: false },
+      { name: "Departments", path: "/departments", pro: false },
+      { name: "Employees", path: "/employees", pro: false },
     ],
+  },
+  {
+    icon: <CalenderIcon />,
+    name: "Task board",
+    path: "/task-boards",
+  },
+  {
+    icon: <CalenderIcon />,
+    name: "Events",
+    path: "/events",
+  },
+  {
+    icon: <CalenderIcon />,
+    name: "Projects",
+    path: "/projects",
+  },
+  {
+    icon: <CalenderIcon />,
+    name: "Leave Management",
+    path: "/leaves",
   },
 ];
 
