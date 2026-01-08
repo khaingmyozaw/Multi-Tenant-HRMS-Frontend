@@ -21,10 +21,10 @@ function DashboardContent({
             : "lg:ml-[90px]";
 
     return (
-        <div className="min-h-screen xl:flex">
+        <div className="min-h-screen xl:flex bg-neutral-50 dark:bg-neutral-900">
             {/* Sidebar and Backdrop */}
             <AppSidebar />
-            <Backdrop />
+            <Backdrop />    
             {/* Main Content Area */}
             <div
                 className={`overflow-hidden flex-1 transition-all duration-300 ease-in-out ${mainContentMargin}`}

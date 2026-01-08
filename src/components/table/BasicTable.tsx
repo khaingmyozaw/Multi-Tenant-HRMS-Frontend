@@ -11,6 +11,7 @@ import Badge from "../ui/badge/Badge";
 import Image from "next/image";
 import ComponentCard from "../common/ComponentCard";
 import { Input } from "../ui/input";
+import TableHeaderElements from "./TableHeaderElements";
 
 interface Order {
     id: number;
@@ -113,64 +114,45 @@ const tableData: Order[] = [
     },
 ];
 
-export default function BasicTable() {
+const headers: [string] = [
+    'No',
+    'Name',
+    'Short name',
+    'Members',
+    'Action',
+];
+
+export default function BasicTable(): React.ReactNode {
     return (
-        <ComponentCard title={
-            <div className="flex justify-between items-center">
-                10 rows per page
-                <Input
-                    type='text'
-                    name='search'
-                    id='search'
-                    placeholder='Search here'
-                    className='w-auto p-2 shadow-none placeholder:text-neutral-400 border-neutral-200 focus-visible:border-brand-300 focus-visible:ring-0'
-                />
+        <div className='rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]'>
+            <div className="px-4 py-5">
+                <TableHeaderElements />
             </div>
-        }>
             <div className="overflow-hidden bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
                 <div className="max-w-full overflow-x-auto">
-                    <div className="min-w-[1102px]">
+                    <div className="min-w-[1102px] bg-neutral-50 dark:bg-white/[0.03]">
                         <Table>
                             {/* Table Header */}
                             <TableHeader className="border-b border-gray-100 dark:border-white/[0.05]">
                                 <TableRow>
-                                    <TableCell
-                                        isHeader
-                                        className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
-                                    >
-                                        User
-                                    </TableCell>
-                                    <TableCell
-                                        isHeader
-                                        className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
-                                    >
-                                        Project Name
-                                    </TableCell>
-                                    <TableCell
-                                        isHeader
-                                        className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
-                                    >
-                                        Team
-                                    </TableCell>
-                                    <TableCell
-                                        isHeader
-                                        className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
-                                    >
-                                        Status
-                                    </TableCell>
-                                    <TableCell
-                                        isHeader
-                                        className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
-                                    >
-                                        Budget
-                                    </TableCell>
+                                    {
+                                        headers.map((item, index) => (
+                                            <TableCell
+                                                isHeader
+                                                className="px-5 py-3 font-bold text-neutral-800 text-start text-theme-xs dark:text-neutral-200"
+                                                key={`${item}-${index}`}
+                                            >
+                                                {item}
+                                            </TableCell>
+                                        ))
+                                    }
                                 </TableRow>
                             </TableHeader>
 
                             {/* Table Body */}
                             <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
-                                {tableData.map((order) => (
-                                    <TableRow key={order.id}>
+                                {tableData.map((order, index) => (
+                                    <TableRow className={! (index % 2) ? 'bg-neutral-100 dark:bg-neutral-800' : ''} key={order.id}>
                                         <TableCell className="px-5 py-4 sm:px-6 text-start">
                                             <div className="flex items-center gap-3">
                                                 <div className="w-10 h-10 overflow-hidden rounded-full">
@@ -236,6 +218,6 @@ export default function BasicTable() {
                     </div>
                 </div>
             </div>
-        </ComponentCard>
+        </div>
     );
 }
