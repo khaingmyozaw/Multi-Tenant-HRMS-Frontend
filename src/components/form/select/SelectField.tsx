@@ -1,5 +1,4 @@
-import * as React from "react"
-
+"use client"
 import {
     Select,
     SelectContent,
@@ -17,28 +16,30 @@ const SelectField = ({
     label,
     placeholder = 'Select a value',
     className = '',
+    keyPrefix = '',
 }: SelectFieldTypes) => {
     return (
         <Select>
-            <SelectTrigger className={className}>
+            <SelectTrigger className={`focus-visible:ring-3 focus-visible:ring-brand-300/20 focus-visible:border-brand-300 ${className}`}>
                 <SelectValue placeholder={placeholder} />
             </SelectTrigger>
-            <SelectContent className="mt-">
+            <SelectContent className="dark:border-neutral-800">
                 <SelectGroup>
                     {
                         label ? <SelectLabel>{label}</SelectLabel> : ''
                     }
                     {
-                        children ?? items?.map((item, key) => {
+                        items ? items?.map((item, key) => {
                             return (
                                 <SelectItem
-                                    key={item}
+                                    key={`${keyPrefix}_${key}`}
                                     value={`${key}`}
                                 >
                                     {item}
                                 </SelectItem>
                             )
                         })
+                            : children
                     }
                 </SelectGroup>
             </SelectContent>

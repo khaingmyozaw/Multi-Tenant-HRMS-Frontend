@@ -129,7 +129,7 @@ export default function BasicTable(): React.ReactNode {
                 <TableHeaderElements />
             </div>
             <div className="overflow-hidden bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
-                <div className="max-w-full overflow-x-auto">
+                <div className="max-w-full overflow-x-auto snap-x">
                     <div className="min-w-[1102px] bg-neutral-50 dark:bg-white/[0.03]">
                         <Table>
                             {/* Table Header */}
@@ -139,7 +139,7 @@ export default function BasicTable(): React.ReactNode {
                                         headers.map((item, index) => (
                                             <TableCell
                                                 isHeader
-                                                className="px-5 py-3 font-bold text-neutral-800 text-start text-theme-xs dark:text-neutral-200"
+                                                className="px-5 py-3 font-bold text-neutral-800 text-start text-theme-xs dark:text-neutral-200 snap-start"
                                                 key={`${item}-${index}`}
                                             >
                                                 {item}
@@ -152,8 +152,11 @@ export default function BasicTable(): React.ReactNode {
                             {/* Table Body */}
                             <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
                                 {tableData.map((order, index) => (
-                                    <TableRow className={! (index % 2) ? 'bg-neutral-100 dark:bg-neutral-800' : ''} key={order.id}>
-                                        <TableCell className="px-5 py-4 sm:px-6 text-start">
+                                    <TableRow className={!(index % 2) ? 'bg-neutral-100 dark:bg-neutral-800' : ''} key={order.id}>
+                                        <TableCell className="px-5 py-4 sm:px-6 text-start snap-start">
+                                            <p className="text-gray-800 dark:text-white/50">{++index}</p>
+                                        </TableCell>
+                                        <TableCell className="px-5 py-4 sm:px-6 text-start snap-start">
                                             <div className="flex items-center gap-3">
                                                 <div className="w-10 h-10 overflow-hidden rounded-full">
                                                     <Image
@@ -173,10 +176,10 @@ export default function BasicTable(): React.ReactNode {
                                                 </div>
                                             </div>
                                         </TableCell>
-                                        <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                                        <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400 snap-start">
                                             {order.projectName}
                                         </TableCell>
-                                        <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                                        <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400 snap-start">
                                             <div className="flex -space-x-2">
                                                 {order.team.images.map((teamImage, index) => (
                                                     <div
@@ -194,7 +197,7 @@ export default function BasicTable(): React.ReactNode {
                                                 ))}
                                             </div>
                                         </TableCell>
-                                        <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                                        <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400 snap-start">
                                             <Badge
                                                 size="sm"
                                                 color={
@@ -208,7 +211,7 @@ export default function BasicTable(): React.ReactNode {
                                                 {order.status}
                                             </Badge>
                                         </TableCell>
-                                        <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+                                        <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400 snap-start">
                                             {order.budget}
                                         </TableCell>
                                     </TableRow>

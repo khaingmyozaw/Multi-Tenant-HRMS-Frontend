@@ -96,11 +96,11 @@ const SignInForm = () => {
                     }
 
 
-                    <InputField 
-                        label='Email' 
-                        name='email' 
-                        id='email' 
-                        placeholder='hr@company.com' 
+                    <InputField
+                        label='Email'
+                        name='email'
+                        id='email'
+                        placeholder='hr@company.com'
                         value={email}
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                     />
@@ -170,7 +170,7 @@ const SignInForm = () => {
                         <div className="w-full border-t border-neutral-200 dark:border-neutral-800"></div>
                     </div>
                     <div className="relative flex justify-center text-sm">
-                        <span className="p-2 text-gray-400 bg-neutral-50 dark:bg-neutral-900 sm:px-5 sm:py-2">
+                        <span className="p-2 text-gray-400 bg-neutral-50 dark:bg-neutral-950 sm:px-5 sm:py-2">
                             Or
                         </span>
                     </div>

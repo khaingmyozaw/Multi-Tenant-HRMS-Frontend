@@ -13,4 +13,5 @@ export type SelectFieldTypes = (
     label?: string
     placeholder?: string
     className?: string
+    keyPrefix?: string
 }
